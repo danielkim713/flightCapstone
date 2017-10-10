@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <title>Flight Capstone</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<div class="instructions">
+		<h1> Spontaneous Flight Finder</h1>
+		<p> Instructions: Fill out boxes accordingly in order to find flights that fit the parameters you seek </p>
+	</div>
+
+  <div class="search">
+    <form class="parameters" action="#" autocomplete="on">
+      Origin: <input type="text" name="travel" placeholder="Flying from..." required>
+      Destination: <input type="text" name="travel" placeholder="Going to..." requrired>
+      Max Price ($): <input type="text" name="budget" placeholder="Spending budget" required>
+      How many passengers: <input type="number" name="passengers" min="1" max="10" required></br>
+      Departure Date: <input type="date" name="day" required>
+      Arrival Date: <input type="date" name="day" required>
+      <input name="submit" type="submit">
+  </div>
+	
+  <div>Weather</div>
+  
+  <div class="js-search-results">
+ 	</div>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+ 	<script src="app.js"></script>
+</body>
+</html>
