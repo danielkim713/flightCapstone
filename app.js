@@ -37,8 +37,7 @@ function fetchData () {
 		'Content-Type': 'application/json',
 	};
 
-	fetch('https://www.googleapis.com/qpxExpress/v1/trips/search?key=' + 'AIzaSyAtDSnmVSyt7-55EYpE1milbl1KvwXrGGA', 
-		{
+	fetch(google_base_url + api_key,
 			headers: headers,
 			method: 'POST',
 			body: JSON.stringify(body)
