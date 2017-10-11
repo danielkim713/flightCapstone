@@ -1,5 +1,5 @@
 function displayOptions(){
-	$(".parameters").on("submit" , function(e)) {
+	$(".parameters").on("submit" , function(e) {
 		e.preventDefault();
 		$(this).children('input[type=submit]').prop('disabled', true);
 		if ($('input[type=text]').value === "") {
@@ -8,7 +8,7 @@ function displayOptions(){
 			else {
 			searchFlights();
 		}
-	}
+	});
 }
 
 function fetchData () {
@@ -34,7 +34,7 @@ function fetchData () {
 		'Content-Type': 'application/json',
 	};
 
-	fetch('https://www.googleapis.com/qpxExpress/v1/trips/search?key=' + 'AIzaSyAtDSnmVSyt7-55EYpE1milbl1KvwXrGGA' 
+	fetch('https://www.googleapis.com/qpxExpress/v1/trips/search?key=' + 'AIzaSyAtDSnmVSyt7-55EYpE1milbl1KvwXrGGA', 
 		{
 			headers: headers,
 			method: 'POST',
@@ -49,4 +49,4 @@ function fetchData () {
 
 $(document).ready(function() {
     fetchData();
-}
+});
