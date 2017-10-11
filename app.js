@@ -34,7 +34,7 @@ function fetchData () {
 		'Content-Type': 'application/json',
 	};
 
-	fetch('https://www.googleapis.com/qpxExpress/v1/trips/search?key=' + AIzaSyAtDSnmVSyt7-55EYpE1milbl1KvwXrGGA 
+	fetch('https://www.googleapis.com/qpxExpress/v1/trips/search?key=' + 'AIzaSyAtDSnmVSyt7-55EYpE1milbl1KvwXrGGA' 
 		{
 			headers: headers,
 			method: 'POST',
@@ -47,4 +47,6 @@ function fetchData () {
 	});
 }
 
-fetchData();
+$(document).ready(function() {
+    fetchData();
+}
