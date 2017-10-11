@@ -11,20 +11,40 @@ function displayOptions(){
 	}
 }
 
-$(function(){
-    var dtToday = new Date();
-    
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if(month < 10)
-        month = '0' + month.toString();
-    if(day < 10)
-        day = '0' + day.toString();
-    
-    var minDate= year + '-' + month + '-' + day;
-    
-    $('#id').attr('min', minDate);
-});
+function fetchData () {
+	var body = {
+		request: {
+			passengers: {
+				kind: 'qpxexpress#passengerCounts',
+				adultCount: 1
+			},
+			slice: [
+				{
+					kind: 'qpxexpress#sliceInput',
+					origin: 'LAX',
+					destination: 'BOS',
+					date: '2017-10-20',
+				}
+			]
+		}
+	};
 
-function();
+	var headers = {
+		'Accept': 'application/json',
+		'Content-Type': 'application/json',
+	};
+
+	fetch('https://www.googleapis.com/qpxExpress/v1/trips/search?key=' + AIzaSyAtDSnmVSyt7-55EYpE1milbl1KvwXrGGA 
+		{
+			headers: headers,
+			method: 'POST',
+			body: JSON.stringify(body)
+		}
+	).then(function(response) {
+		return response.json();
+	}).then(function(data) {
+		console.log(data);
+	});
+}
+
+fetchData();
