@@ -6,7 +6,7 @@ function displayOptions(){
 			console.log("REQUIRED");
 		}
 			else {
-			searchFlights();
+			fetchData();
 		}
 	});
 }
