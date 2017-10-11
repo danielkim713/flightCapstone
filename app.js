@@ -1,3 +1,6 @@
+var google_base_url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=';
+var api_key = 'AIzaSyAtDSnmVSyt7-55EYpE1milbl1KvwXrGGA';
+
 function displayOptions(){
 	$(".parameters").on("submit" , function(e) {
 		e.preventDefault();
@@ -12,7 +15,7 @@ function displayOptions(){
 }
 
 function fetchData () {
-	var body = {
+	let body = {
 		request: {
 			passengers: {
 				kind: 'qpxexpress#passengerCounts',
@@ -29,7 +32,7 @@ function fetchData () {
 		}
 	};
 
-	var headers = {
+	let headers = {
 		'Accept': 'application/json',
 		'Content-Type': 'application/json',
 	};
