@@ -1,14 +1,23 @@
 body{
 	width: 800px;
+	background-color: rgba(0,0,255,0.2);
+	font-family: 'PT Sans Caption', sans-serif;
 }
 
-h1{
-	font-size: 24px;
-	color: black;
+.top-left{
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 42px;
 }
 
-.instructions{
-	background: rgba(76, 175, 80, 0.4)
+.tip{
+	font-size: 17px;
+	margin-bottom: 15px;
+}
+
+form{
+	font-size: 15px;
 }
 
 input{
@@ -18,7 +27,16 @@ input{
 	margin-bottom: 10px;
 }
 
+[name|="submit"]{
+	width:205px;
+}
+
 [name|="passengers"]{
 	display: inline;
-	width: 48px;
+	width: 28px;
+}
+
+.plane{
+	height: 200px;
+	width: 800px;
 }

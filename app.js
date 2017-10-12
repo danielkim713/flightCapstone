@@ -1,5 +1,6 @@
-var google_base_url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=';
-var api_key = 'AIzaSyAtDSnmVSyt7-55EYpE1milbl1KvwXrGGA';
+let google_url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=';
+let api_key = 'AIzaSyAtDSnmVSyt7-55EYpE1milbl1KvwXrGGA';
+
 
 function displayOptions(){
 	$(".parameters").on("submit" , function(e) {
@@ -9,7 +10,7 @@ function displayOptions(){
 			console.log("REQUIRED");
 		}
 			else {
-			fetchData();
+			searchFlights();
 		}
 	});
 }
@@ -37,7 +38,8 @@ function fetchData () {
 		'Content-Type': 'application/json',
 	};
 
-	fetch(google_base_url + api_key,
+	fetch(google_url + api_key, 
+		{
 			headers: headers,
 			method: 'POST',
 			body: JSON.stringify(body)
