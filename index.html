@@ -8,28 +8,27 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-	<div class="instructions">
+  <div class="instructions">
     <a><img src='http://content.skyscnr.com/5534091bc5db85a8a0cdfa13da6349b4/BACKUP_3-banner.jpg' alt='Airplane tickets' class="plane"></a>
     <div class="top-left"> Budget Flight Finder</div>
-		<div class="tip"> Instructions: Fill out boxes accordingly in order to find flights that fit the parameters you seek </div>
-	</div>
+    <div class="tip"> Instructions: Fill out boxes accordingly in order to find flights that fit the parameters you seek </div>
+  </div>
 
   <div class="search">
-    <form class="parameters" action="#" autocomplete="on">
-      Origin: <input type="text" name="travel" placeholder="Flying from..." required>
-      Destination: <input type="text" name="travel" placeholder="Going to..." required>
-      Max Price ($): <input type="text" name="budget" placeholder="Spending budget" required>
-      How many passengers: <input type="number" name="passengers" value = "1" min="1" max="10" required></br>
-      Departure Date: <input type="date" name="day" required>
-      Arrival Date: <input type="date" name="day" required>
-      <input name="submit" type="submit" value="Search">
+    <form id="myForm" class="parameters" action="#" autocomplete="on">
+        Origin: <input class="form-input" type="text" name="origin" placeholder="Flying from..." required>
+        Destination: <input class="form-input" type="text" name="destination" placeholder="Going to..." required>
+        Max Price ($): <input class="form-input" type="text" name="budget" placeholder="Spending budget" required>
+        How many passengers: <input class="form-input" type="number" name="passengers" value = "1" min="1" max="10" required></br>
+        Departure Date: <input class="form-input" type="date" name="departure" required>
+        Arrival Date: <input class="form-input" type="date" name="arrival" required>
+        <input type="submit" value="Search">
+      </form>
   </div>
-	
-  <div>Weather</div>
-  
+
   <div class="js-search-results">
- 	</div>
+  </div>
   <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
- 	<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
