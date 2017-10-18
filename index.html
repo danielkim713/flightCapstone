@@ -8,6 +8,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+  <section class='flight-intro'>
+    <p>Welcome to the Budget Flight Finder</p>
+    <p>Instructions: Press start to begin </p>
+    <button id="start">Start</button>
+  </section>
   <div class="instructions">
     <a><img src='http://content.skyscnr.com/5534091bc5db85a8a0cdfa13da6349b4/BACKUP_3-banner.jpg' alt='Airplane tickets' class="plane"></a>
     <div class="top-left"> Budget Flight Finder</div>
@@ -16,18 +21,17 @@
 
   <div class="search">
     <form id="myForm" class="parameters" action="#" autocomplete="on">
-        Origin: <input class="form-input" type="text" name="origin" placeholder="Flying from..." required>
-        Destination: <input class="form-input" type="text" name="destination" placeholder="Going to..." required>
-        Max Price ($): <input class="form-input" type="text" name="budget" placeholder="Spending budget" required>
-        How many passengers: <input class="form-input" type="number" name="passengers" value = "1" min="1" max="10" required></br>
-        Departure Date: <input class="form-input" type="date" name="departure" required>
-        Arrival Date: <input class="form-input" type="date" name="arrival" required>
-        <input type="submit" value="Search">
+        <div class="words">Where from?</div> <input class="form-input" type="text" name="origin" placeholder="e.g.: LAX" required>
+        <div class="words">Where to?</div> <input class="form-input" type="text" name="destination" placeholder="e.g.: BOS" required>
+        <div class="words">Passengers:</div> <input class="form-input" type="number" name="passengers" value = "1" min="1" max="10" required></br>
+        <div class="words">Budget Price ($):</div> <input class="form-input" type="text" name="budget" placeholder="Spending budget" required>
+        <div class="words">Departure Date:</div> <input class="form-input" type="date" name="departure" placeholder="e.g. 01/01/2017" required>
+        <div class="words">Arrival Date:</div> <input class="form-input" type="date" name="arrival" placeholder="e.g. 12/31/2017" required>
+        <input name="submit" type="submit" value="Search">
       </form>
   </div>
 
-  <div class="js-search-results">
-  </div>
+  <div class="js-search-results">  </div>
   <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
   <script src="app.js"></script>
 </body>
