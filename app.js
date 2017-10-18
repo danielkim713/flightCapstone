@@ -84,7 +84,8 @@ function fetchData(userInput) {
                 price: null
             } 
         };
-        populateResults(results);
+        console.log(results);
+        //populateResults(results);
     }).catch(function(err) {
         console.log(err);
     });
