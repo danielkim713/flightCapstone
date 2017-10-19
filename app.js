@@ -40,15 +40,15 @@ function fetchData(userInput) {
     ).then(function(response) {
         return response.json();
     }).then(function(data) {
-        var results = [];
+        let results = [];
 
-        var tripObject = {
+        let tripObject = {
             goingThere: [],
             comingBack: [],
             price: null
         }
 
-        var flight = {
+        let flight = {
             price: null,
             flightNumber: null,
             arrivalTime: null,
@@ -61,8 +61,8 @@ function fetchData(userInput) {
             for (let j = 0; j < data.trips.tripOption[i].slice.length; j++) {
                 for (let k = 0; k < data.trips.tripOption[i].slice[j].segment.length; k++) {
                     flight.flightNumber = data.trips.tripOption[i].slice[j].segment[k].flight.carrier + data.trips.tripOption[i].slice[j].segment[k].flight.number;
-                    flight.arrivalTime = data.trips.tripOption[i].slice[j].segment[k].leg[0].arrivalTime
-                    flight.departureTime = data.trips.tripOption[i].slice[j].segment[k].leg[0].departureTime
+                    flight.arrivalTime = data.trips.tripOption[i].slice[j].segment[k].leg[0].arrivalTime;
+                    flight.departureTime = data.trips.tripOption[i].slice[j].segment[k].leg[0].departureTime;
                     if (j === 0) {
                         tripObject.goingThere.push(flight);
                     } else if (j === 1) {
@@ -84,8 +84,8 @@ function fetchData(userInput) {
                 price: null
             } 
         };
-        console.log(results);
-        //populateResults(results);
+        //console.log(results);
+        populateResults(results);
     }).catch(function(err) {
         console.log(err);
     });
@@ -93,15 +93,9 @@ function fetchData(userInput) {
 
 function populateResults(results) {
     for (let i = 0; i < results.length; i++) {
-        for (let j = 0; j < results[i].length; j++) {
-            for (let i=0; i < goingThere.length; i++) {
-                let result = '<div data-key="trip' + i + 'flight' + j + '">'+ results[i][j].flightNumber + ' ' + results[i][j].price + ' ' + results[i][j].departureTime + ' ' + results[i][j].arrivalTime + ' </div>'
-                $('.js-search-results').append(result);
-            }
-            for (let i=0; i < comingBack.length; i++){
-                let result = '<div data-key="trip' + i + 'flight' + j + '">'+ results[i][j].flightNumber + ' ' + results[i][j].price + ' ' + results[i][j].departureTime + ' ' + results[i][j].arrivalTime + ' </div>'
-                $('.js-search-results').append(result);               
-            }
+        for (let j = 1; j >= 0; j--) {
+            let result = '<div data-key="tripObject' + i + 'flight' + j + '">'+ results[i][j].flightNumber + ' ' + results[i][2].price + ' ' + results[i][j].departureTime + ' ' + results[i][j].arrivalTime + ' </div>'
+            $('.js-search-results').append(result);
         }
     }
 }
