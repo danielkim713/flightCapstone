@@ -92,13 +92,26 @@ function fetchData(userInput) {
 }
 
 function populateResults(results) {
-    for (let i = 0; i < results.length; i++) {
-        for (let j = 1; j >= 0; j--) {
+    for (i = 0; i < results.length; i++) {
+        for (j = 0; j < results[i].goingThere.length; j++) {
             let result = '<div data-key="tripObject' + i + 'flight' + j + '">'+ results[i][j].flightNumber + ' ' + results[i][2].price + ' ' + results[i][j].departureTime + ' ' + results[i][j].arrivalTime + ' </div>'
             $('.js-search-results').append(result);
-        }
+      }
+        for (k = 0; k < results[i].comingBack.length;k++) {
+            let result = '<div data-key="tripObject' + i + 'flight' + j + '">'+ results[i][j].flightNumber + ' ' + results[i][2].price + ' ' + results[i][j].departureTime + ' ' + results[i][j].arrivalTime + ' </div>'
+            $('.js-search-results').append(result);
+      }
+        let result = price
+        $('.js-search-results').append(result);
     }
 }
+   // for (let i = 0; i < results.length; i++) {
+   //     for (let j = 1; j >= 0; j--) {
+   //         let result = '<div data-key="tripObject' + i + 'flight' + j + '">'+ results[i][j].flightNumber + ' ' + results[i][2].price + ' ' + results[i][j].departureTime + ' ' + results[i][j].arrivalTime + ' </div>'
+   //         $('.js-search-results').append(result);
+   //     }
+   // }
+   //}
 
 $(document).ready(function() {
     $("button").click(function(){
