@@ -95,11 +95,11 @@ function populateResults(results) {
         let result = results[i].price 
         $('.js-search-results').append(result);
         for (j = 0; j < results[i].goingThere.length; j++) {
-            let result = '<div data-key="tripObject' + i + 'flight' + results[i].goingThere[j].flightNumber + '">' + results[i].goingThere[j].flightNumber + ' ' + results[i].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + results[i].goingThere[j].departureTime.split('').slice(11,16).join('') + ' ' + "-" + ' '+ results[i].goingThere[j].arrivalTime.split('').slice(11,16).join('') + ' </div>'
+            let result = '<div data-key="tripObject' + i + 'flight' + results[i].goingThere[j].flightNumber + '">' + "Flight Number:" + ' ' + results[i].goingThere[j].flightNumber + ' ' + "Departure Flight:" + ' ' + results[i].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + results[i].goingThere[j].departureTime.split('').slice(11,16).join('') + ' ' + "-" + ' '+ results[i].goingThere[j].arrivalTime.split('').slice(11,16).join('') + ' </div>'
             $('.js-search-results').append(result);
       }
         for (k = 0; k < results[i].comingBack.length; k++) {
-            let result = '<div data-key="tripObject' + i + 'flight' + results[i].comingBack[k].flightNumber + '">' + results[i].comingBack[k].flightNumber + ' ' + results[i].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + results[i].comingBack[k].departureTime.split('').slice(11,16).join('') + ' ' + "-" + ' '+ results[i].comingBack[k].arrivalTime.split('').slice(11,16).join('') + ' </div>'
+            let result = '<div class="tripFlight" data-key="tripObject' + i + 'flight' + results[i].comingBack[k].flightNumber + '">' + "Flight Number:" + ' ' + results[i].comingBack[k].flightNumber + ' ' + "Arrival Flight:" + ' ' + results[i].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + results[i].comingBack[k].departureTime.split('').slice(11,16).join('') + ' ' + "-" + ' '+ results[i].comingBack[k].arrivalTime.split('').slice(11,16).join('') + ' </br></div>'
             $('.js-search-results').append(result);
       }
     }
