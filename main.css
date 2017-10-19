@@ -41,6 +41,7 @@ input{
 
 [name|="submit"]{
 	width:800px;
+	margin-bottom: 10px;
 }
 
 [name|="passengers"]{

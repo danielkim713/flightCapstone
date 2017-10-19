@@ -56,7 +56,6 @@ function fetchData(userInput) {
         };
 
         for (let i = 0; i <= 50; i+=10) {
-            console.log(i);
             tripObject.price = data.trips.tripOption[i].saleTotal
             for (let j = 0; j < data.trips.tripOption[i].slice.length; j++) {
                 for (let k = 0; k < data.trips.tripOption[i].slice[j].segment.length; k++) {
@@ -94,24 +93,15 @@ function fetchData(userInput) {
 function populateResults(results) {
     for (i = 0; i < results.length; i++) {
         for (j = 0; j < results[i].goingThere.length; j++) {
-            let result = '<div data-key="tripObject' + i + 'flight' + j + '">'+ results[i][j].flightNumber + ' ' + results[i][2].price + ' ' + results[i][j].departureTime + ' ' + results[i][j].arrivalTime + ' </div>'
+            let result = '<div data-key="tripObject' + i + 'flight' + results[i].goingThere[j].flightNumber + '">'+ results[i].goingThere[j].flightNumber + ' ' + results[i].price + ' ' + results[i].goingThere[j].departureTime + ' ' + results[i].goingThere[j].arrivalTime + ' </div>'
             $('.js-search-results').append(result);
       }
         for (k = 0; k < results[i].comingBack.length;k++) {
-            let result = '<div data-key="tripObject' + i + 'flight' + j + '">'+ results[i][j].flightNumber + ' ' + results[i][2].price + ' ' + results[i][j].departureTime + ' ' + results[i][j].arrivalTime + ' </div>'
+            let result = '<div data-key="tripObject' + i + 'flight' + results[i].comingBack[k].flightNumber + '">'+ results[i].comingBack[k].flightNumber + ' ' + results[i].price + ' ' + results[i].comingBack[k].departureTime + ' ' + results[i].comingBack[k].arrivalTime + ' </div>'
             $('.js-search-results').append(result);
       }
-        let result = price
-        $('.js-search-results').append(result);
     }
 }
-   // for (let i = 0; i < results.length; i++) {
-   //     for (let j = 1; j >= 0; j--) {
-   //         let result = '<div data-key="tripObject' + i + 'flight' + j + '">'+ results[i][j].flightNumber + ' ' + results[i][2].price + ' ' + results[i][j].departureTime + ' ' + results[i][j].arrivalTime + ' </div>'
-   //         $('.js-search-results').append(result);
-   //     }
-   // }
-   //}
 
 $(document).ready(function() {
     $("button").click(function(){
