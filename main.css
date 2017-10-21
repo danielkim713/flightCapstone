@@ -61,3 +61,10 @@ input{
 .tripFlight{
 	margin-bottom: 10px;
 }
+
+@media only screen and (max-width: 800px) {
+    body {
+        width: 100%;
+        margin: 1.0121457489878542510121457489879%;
+    }
+}
