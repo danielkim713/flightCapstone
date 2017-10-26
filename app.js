@@ -85,6 +85,9 @@ function fetchData(userInput) {
         };
         //console.log(results);
         populateResults(results);
+        $(".buttonload").html('Search Again');
+        $(".js-search-results").removeClass('hidden');
+
     }).catch(function(err) {
         console.log(err);
     });
@@ -92,7 +95,7 @@ function fetchData(userInput) {
 
 function populateResults(results) {
     for (i = 0; i < results.length; i++) {
-        let result = results[i].price 
+        let result = results[i].price   
         $('.js-search-results').append(result);
         for (j = 0; j < results[i].goingThere.length; j++) {
             let result = '<div data-key="tripObject' + i + 'flight' + results[i].goingThere[j].flightNumber + '">' + "Flight Number:" + ' ' + results[i].goingThere[j].flightNumber + ' ' + "Departure Flight:" + ' ' + results[i].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + results[i].goingThere[j].departureTime.split('').slice(11,16).join('') + ' ' + "-" + ' '+ results[i].goingThere[j].arrivalTime.split('').slice(11,16).join('') + ' </div>'
@@ -113,6 +116,9 @@ $(document).ready(function() {
 
     $('#myForm').submit(function() {
         event.preventDefault();
+
+        $(".buttonload").html('<i class="fa fa-spinner fa-spin"></i>Loading');
+
         let values = {};
 
         let $inputs = $('#myForm .form-input');

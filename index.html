@@ -4,35 +4,47 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Flight Capstone</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+  <div class="container">
 
-  <section class='flight-intro'>
-    <p>Welcome to the Budget Flight Finder</p>
-    <p>Instructions: Press start to begin </p>
-    <button id="start">Start</button>
-  </section>
-  <div class="instructions">
-    <a><img src='http://content.skyscnr.com/5534091bc5db85a8a0cdfa13da6349b4/BACKUP_3-banner.jpg' alt='Airplane tickets' class="plane"></a>
-    <div class="top-left"> Budget Flight Finder</div>
-    <div class="tip"> Instructions: Fill out boxes accordingly in order to find flights that fit the parameters you seek </div>
-  </div>
+    <section class='flight-intro'>
+      <div class="overlay">
+        <p>Welcome to the Budget Flight Finder</p>
+        <p>Press start to begin </p>
+        <button id="start">Start</button>
+      </div>
+    </section>
 
-  <div class="search">
-    <form id="myForm" class="parameters" action="#" autocomplete="on">
-        <div class="words">Where from?</div> <input class="form-input" type="text" name="origin" placeholder="e.g.: LAX" required>
-        <div class="words">Where to?</div> <input class="form-input" type="text" name="destination" placeholder="e.g.: BOS" required>
-        <div class="words">Passengers:</div> <input class="form-input" type="number" name="passengers" value = "1" min="1" max="10" required></br>
-        <div class="words">Budget Price ($):</div> <input class="form-input" type="text" name="budget" placeholder="Spending budget" required>
-        <div class="words">Departure Date:</div> <input class="form-input" type="date" name="departure" placeholder="e.g. 01/01/2017" required>
-        <div class="words">Arrival Date:</div> <input class="form-input" type="date" name="arrival" placeholder="e.g. 12/31/2017" required>
-        <input name="submit" type="submit" value="Search">
+
+    <div class="instructions">
+      <img src='http://content.skyscnr.com/5534091bc5db85a8a0cdfa13da6349b4/BACKUP_3-banner.jpg' alt='Airplane tickets' class="plane">
+        <div class="top-left"> Budget Flight Finder</div>
+      <div class="tip"> Instructions: Fill out boxes accordingly in order to find flights that fit the parameters you seek </div>
+    </div>
+
+    <div class="search">
+      <form id="myForm" class="parameters" action="#" autocomplete="on">
+        <div class="wrapper">
+          <div class="words">Where from?</div> <input class="form-input" type="text" name="origin" placeholder="e.g.: LAX" required>
+          <div class="words">Where to?</div> <input class="form-input" type="text" name="destination" placeholder="e.g.: BOS" required>
+          <div class="words">Passengers:</div> <input class="form-input" type="number" name="passengers" value = "1" min="1" max="10" required></br>
+          <div class="words">Budget Price ($):</div> <input class="form-input" type="text" name="budget" placeholder="Spending budget" required>
+          <div class="words">Departure Date:</div> <input class="form-input" type="date" name="departure" placeholder="e.g. 01/01/2017" required>
+          <div class="words">Arrival Date:</div> <input class="form-input" type="date" name="arrival" placeholder="e.g. 12/31/2017" required>
+        </div>
+        <button class="buttonload" type="submit">
+            Search
+        </button>
       </form>
+    </div>
   </div>
 
-  <div class="js-search-results">  </div>
+
+  <div class="js-search-results hidden"> Here are the results:</br></div>
   <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
   <script src="app.js"></script>
 </body>
