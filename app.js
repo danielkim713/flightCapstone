@@ -102,7 +102,7 @@ function populateResults(results) {
             $('.js-search-results').append(result);
       }
         for (k = 0; k < results[i].comingBack.length; k++) {
-            let result = '<div class="tripFlight" data-key="tripObject' + i + 'flight' + results[i].comingBack[k].flightNumber + '">' + "Flight Number:" + ' ' + results[i].comingBack[k].flightNumber + ' ' + "Arrival Flight:" + ' ' + results[i].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + results[i].comingBack[k].departureTime.split('').slice(11,16).join('') + ' ' + "-" + ' '+ results[i].comingBack[k].arrivalTime.split('').slice(11,16).join('') + ' </br></div>'
+            let result = '<div class="tripFlight" data-key="tripObject' + i + 'flight' + results[i].comingBack[k].flightNumber + '">' + "Flight Number:" + ' ' + results[i].comingBack[k].flightNumber + ' ' + "Arrival Flight:" + ' ' + results[i].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + results[i].comingBack[k].departureTime.split('').slice(11,16).join('') + ' ' + "-" + ' '+ results[i].comingBack[k].arrivalTime.split('').slice(11,16).join('') + '</div>'
             $('.js-search-results').append(result);
       }
     }
