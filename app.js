@@ -1,7 +1,7 @@
 let google_url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=';
 let api_key = 'AIzaSyAtDSnmVSyt7-55EYpE1milbl1KvwXrGGA';
 
-var cCities = [
+let cCities = [
     {label: "Chicago (ORD)", value: "ORD"},
     {label: "Los Angeles (LAX)", value: "LAX"},
     {label: "Boston (BOS)", value: "BOS"},
@@ -208,7 +208,7 @@ $(document).ready(function() {
     });
 
 
-    $('#autoSuggest').autocomplete({
+    $('.autoSuggest').autocomplete({
         source: cCities
     });
 
