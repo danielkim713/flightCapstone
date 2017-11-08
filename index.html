@@ -8,6 +8,9 @@
   <title>Flight Capstone</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/hot-sneaks/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 </head>
 <body>
   <div class="container">
@@ -30,8 +33,8 @@
     <div class="search">
       <form id="myForm" class="parameters" action="#" autocomplete="on">
         <div class="wrapper">
-          <div class="words">Where from?</div> <input class="form-input" type="text" name="origin" placeholder="e.g.: LAX" required>
-          <div class="words">Where to?</div> <input class="form-input" type="text" name="destination" placeholder="e.g.: BOS" required>
+          <div class="words">Where from?</div> <input class="form-input" id="autoSuggest" type="text" name="origin" placeholder="e.g.: LAX" required>
+          <div class="words">Where to?</div> <input class="form-input" id="autoSuggest" type="text" name="destination" placeholder="e.g.: BOS" required>
           <div class="words">Passengers:</div> <input class="form-input" type="number" name="passengers" value = "1" min="1" max="10" required></br>
           <div class="words">Budget Price ($):</div> <input class="form-input" type="text" name="budget" placeholder="Spending budget" required>
           <div class="words">Departure Date:</div> <input class="form-input" type="date" name="departure" placeholder="e.g. 01/01/2017" required>

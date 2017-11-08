@@ -1,6 +1,51 @@
 let google_url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=';
 let api_key = 'AIzaSyAtDSnmVSyt7-55EYpE1milbl1KvwXrGGA';
 
+var cCities = [
+    {label: "Chicago (ORD)", value: "ORD"},
+    {label: "Los Angeles (LAX)", value: "LAX"},
+    {label: "Boston (BOS)", value: "BOS"},
+    {label: "Seoul (ICN)", value: "ICN"},
+    {label: "Beijing (PEK)", value: "PEK"},
+    {label: "London (LHR)", value: "LHR"},
+    {label: "Tokyo (NRT)", value: "NRT"},
+    {label: "Paris (CDG)", value: "CDG"},
+    {label: "Frankfurt (FRA)", value: "FRA"},
+    {label: "Hong Kong (HKG)", value: "HKG"},
+    {label: "Denver (DEN)", value: "DEN"},
+    {label: "Dubai (DXB)", value: "DXB"},
+    {label: "Amsterdam (AMS)", value: "AMS"},
+    {label: "Madrid (MAD)", value: "MAD"},
+    {label: "Bangkok (BKK)", value: "BKK"},
+    {label: "New York (JFK)", value: "JFK"},
+    {label: "Singapore (SIN)", value: "SIN"},
+    {label: "Shanghai (PVG)", value: "PVG"},
+    {label: "San Francisco (SFO)", value: "SFO"},
+    {label: "Miami (MIA)", value: "MIA"},
+    {label: "Munich (MUC)", value: "MUC"},
+    {label: "Rome (FCO)", value: "FCO"},
+    {label: "Sydney (SYD)", value: "SYD"},
+    {label: "London (LGW)", value: "LGW"},
+    {label: "Seoul (GIM)", value: "GIM"},
+    {label: "Tokyo (ZRH)", value: "ZRH"},
+    {label: "Copenhagen (CPH)", value: "CPH"},
+    {label: "Washington D.C. (IAD)", value: "IAD"},
+    {label: "Brussels (BRU)", value: "BRU"},
+    {label: "Vancouver BC (YVR)", value: "YVR"},
+    {label: "Berlin (TXL)", value: "TXL"},
+    {label: "Sao Paulo (GRU)", value: "GRU"},
+    {label: "Rio De Janeiro (GIG)", value: "GIG"},
+    {label: "Lisbon (LIS)", value: "LIS"},
+    {label: "Athens (ATH)", value: "ATH"},
+    {label: "Tampa (TPA)", value: "TPA"},
+    {label: "Grand Rapids (GRR)", value: "GRR"},
+    {label: "Helsinki (HEL)", value: "HEL"},
+    {label: "Auckland (AKL)", value: "AKL"},
+    {label: "Reykjavik (KEF)", value: "KEF"},
+    {label: "Nairobi (NBO)", value: "NBO"}
+];
+
+
 function fetchData(userInput) {
     let body = {
         request: {
@@ -162,10 +207,16 @@ $(document).ready(function() {
           $(".flight-intro").hide();
     });
 
+
+    $('#autoSuggest').autocomplete({
+        source: cCities
+    });
+
+
     $('#myForm').submit(function() {
         event.preventDefault();
 
-        $(".buttonload").html('<i class="fa fa-spinner fa-spin"></i>Loading');
+        $(".buttonload").html('<i class="fa fa-spinner fa-spin"></i> Searching for your flights so sit tight!');
 
         let values = {};
 
