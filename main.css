@@ -158,6 +158,9 @@ input{
 	display: none;
 }
 
+.autoSuggest{
+	background-color: white;
+}
 
 .buttonload {
     background-color: #4CAF50; /* Green background */
