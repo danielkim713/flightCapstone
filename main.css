@@ -176,7 +176,7 @@ input{
 }
 
 @media only screen and (max-width: 800px) {
-	.words,.form-input{
+	.words,.form-input,.js-search-results,.instructions{
 		display: block;
 		width: 100%;
 		margin-bottom: 10px;
