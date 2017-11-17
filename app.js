@@ -132,6 +132,7 @@ function fetchData(userInput) {
         populateResults(results);
         $(".buttonload").html('Search Again');
         $(".js-search-results").removeClass('hidden');
+        $(window).scrollTop($(".js-search-results").offset().top);
 
     }).catch(function(err) {
         console.log(err);
