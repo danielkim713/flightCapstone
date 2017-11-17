@@ -5,12 +5,15 @@
 #start{
 	border: none;
 	height: 50px;
-	width: 250px;
+	width: 100%;
+	max-width: 250px;
 	font-size: 25px;
 	background-color: #198bce;
 	color: white;
 	cursor: pointer;
 	transition: all .5s;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #start:hover{
@@ -20,10 +23,18 @@
 }
 
 .overlay{
-	background-color: rgba(255,255,255,0.7);
+	background-color: rgba(255,255,255,0.5);
 	max-width: 600px;
 	margin: auto;
 	padding: 30px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.overlay p {
+	text-shadow: 1px 1px 11px rgba(0, 0, 0, .7);
 }
 
 .flight-intro{
@@ -38,6 +49,7 @@
   font-size: 25px;
   background-image: url("https://i.pinimg.com/originals/af/3f/2c/af3f2c476db892087152604802d34ea9.jpg");
   background-size: cover;
+	background-position: center;
 }
 
 body{
@@ -60,7 +72,8 @@ body{
 
 .wrapper{
 	margin: auto;
-	width: 800px;
+	max-width: 800px;
+	width: 100%;
 }
 
 .top-left{
@@ -105,7 +118,8 @@ input{
 .departing{
 	height:50px;
 	width:50px;
-	display: inline-block;
+	display: block;
+	float: left;
 }
 
 .cash{
@@ -116,18 +130,21 @@ input{
 .arriving{
 	height:50px;
 	width:50px;
-	display: inline-block;
+	display: block;
+	float: left;
 }
 
 .just{
   padding: 10px;
   position: relative;
+	overflow: hidden;
 }
 
 #connect{
-  padding: 10px;
-  position: absolute;
-  display: inline-block;
+	padding: 10px;
+	display: block;
+	float: left;
+	width: calc(100% - 50px);
 }
 
 #center{
@@ -176,13 +193,22 @@ input{
 }
 
 @media only screen and (max-width: 800px) {
-	.words,.form-input,.js-search-results,.instructions{
+	.words, .form-input, .instructions{
 		display: block;
 		width: 100%;
 		margin-bottom: 10px;
 	}
 
-    .search{
+	.js-search-results {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.search{
     	width: 100%;
     }
+
+	.flight-intro {
+		padding: 15px;
+	}
 }
