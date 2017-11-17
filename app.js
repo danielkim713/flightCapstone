@@ -135,6 +135,8 @@ function fetchData(userInput) {
 
     }).catch(function(err) {
         console.log(err);
+        $(".buttonload").html('Sorry, no flights found! Try again!')
+        $(".buttonload").css("background-color","red")
     });
 }
 
@@ -247,6 +249,7 @@ $(document).ready(function() {
         event.preventDefault();
 
         $(".buttonload").html('<i class="fa fa-spinner fa-spin"></i> Searching for your flights so sit tight!');
+        $(".buttonload").css("background-color","#4CAF50")
 
         let values = {};
 
