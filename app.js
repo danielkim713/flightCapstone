@@ -234,6 +234,7 @@ function militarytoAMPM(militarytime) {
 $(document).ready(function() {
     $("button").click(function(){
           $(".flight-intro").hide();
+          $(".search").css("display", "block")
     });
 
 

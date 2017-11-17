@@ -22,6 +22,10 @@
 	border: 1px solid #198bce;
 }
 
+.search{
+	display:none;
+}
+
 .overlay{
 	background-color: rgba(255,255,255,0.5);
 	max-width: 600px;
