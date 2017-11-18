@@ -129,10 +129,13 @@ function fetchData(userInput) {
             } 
         };
         //console.log(results);
+        $(".clear").html("");
         populateResults(results);
         $(".buttonload").html('Search Again');
-        $(".js-search-results").removeClass('hidden');
-        $(window).scrollTop($(".js-search-results").offset().top);
+        $(".js-search-results").slideDown();
+        $('html, body').animate({
+            scrollTop: $(".js-search-results").offset().top
+        }, 2000);
 
     }).catch(function(err) {
         console.log(err);
@@ -142,6 +145,7 @@ function fetchData(userInput) {
 }
 
 function populateResults(results) {
+
     let result0 = results[0].price   
         $('.price0').append(result0);
         for (j = 0; j < results[0].goingThere.length; j++) {
@@ -214,22 +218,18 @@ function militarytoAMPM(militarytime) {
     // calculate
     var timeValue;
 
-    if (hours > 0 && hours <= 12)
-    {
+    if (hours > 0 && hours <= 12){
       timeValue= "" + hours;
-    } else if (hours > 12)
-    {
+    } else if (hours > 12){
       timeValue= "" + (hours - 12);
     }
-    else if (hours == 0)
-    {
+    else if (hours == 0){
       timeValue= "12";
     }
      
-    timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;  // get minutes
-    timeValue += (hours >= 12) ? " P.M." : " A.M.";  // get AM/PM
+    timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes; 
+    timeValue += (hours >= 12) ? " P.M." : " A.M."; 
 
-    // show
     return timeValue;
 }
 
@@ -240,11 +240,9 @@ $(document).ready(function() {
           $(".search").css("display", "block")
     });
 
-
     $('.autoSuggest').autocomplete({
         source: cCities
     });
-
 
     $('#myForm').submit(function() {
         event.preventDefault();
