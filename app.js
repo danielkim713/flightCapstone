@@ -97,14 +97,16 @@ function fetchData(userInput) {
             price: null,
             flightNumber: null,
             arrivalTime: null,
-            departureTime: null
+            departureTime: null,
+            carrierName: null
         };
 
         for (let i = 0; i <= 50; i+=10) {
             tripObject.price = data.trips.tripOption[i].saleTotal
             for (let j = 0; j < data.trips.tripOption[i].slice.length; j++) {
                 for (let k = 0; k < data.trips.tripOption[i].slice[j].segment.length; k++) {
-                    flight.flightNumber = data.trips.tripOption[i].slice[j].segment[k].flight.carrier + data.trips.tripOption[i].slice[j].segment[k].flight.number;
+                    flight.carrierName = getCarrierName(data.trips.tripOption[i].slice[j].segment[k].flight.carrier, data.trips.data.carrier);
+                    flight.flightNumber = flight.carrierName + " " + data.trips.tripOption[i].slice[j].segment[k].flight.carrier + data.trips.tripOption[i].slice[j].segment[k].flight.number;
                     flight.arrivalTime = data.trips.tripOption[i].slice[j].segment[k].leg[0].arrivalTime;
                     flight.departureTime = data.trips.tripOption[i].slice[j].segment[k].leg[0].departureTime;
                     if (j === 0) {
@@ -117,7 +119,8 @@ function fetchData(userInput) {
                         price: null,
                         flightNumber: null,
                         arrivalTime: null,
-                        departureTime: null
+                        departureTime: null,
+                        carrierName: null
                     };
                 }
             };
@@ -149,61 +152,61 @@ function populateResults(results) {
     let result0 = results[0].price   
         $('.price0').append(result0);
         for (j = 0; j < results[0].goingThere.length; j++) {
-            let result = '<div data-key="tripObject' + 0 + 'flight' + results[0].goingThere[j].flightNumber + '">' + "Flight Number:" + ' ' + results[0].goingThere[j].flightNumber + ' ' + "Departure Time:" + ' ' + results[0].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[0].goingThere[j].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[0].goingThere[j].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
+            let result = '<div data-key="tripObject' + 0 + 'flight' + results[0].goingThere[j].flightNumber + '">' + "Flight:" + ' ' + results[0].goingThere[j].flightNumber + ' ' + "Departure Time:" + ' ' + results[0].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[0].goingThere[j].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[0].goingThere[j].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
             $('.departure0').append(result);
       }
         for (k = 0; k < results[0].comingBack.length; k++) {
-            let result = '<div class="tripFlight" data-key="tripObject' + 0 + 'flight' + results[0].comingBack[k].flightNumber + '">' + "Flight Number:" + ' ' + results[0].comingBack[k].flightNumber + ' ' + "Return Time:" + ' ' + results[0].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[0].comingBack[k].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[0].comingBack[k].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
+            let result = '<div class="tripFlight" data-key="tripObject' + 0 + 'flight' + results[0].comingBack[k].flightNumber + '">' + "Flight:" + ' ' + results[0].comingBack[k].flightNumber + ' ' + "Return Time:" + ' ' + results[0].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[0].comingBack[k].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[0].comingBack[k].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
             $('.arrival0').append(result);
       }
     let result1 = results[1].price   
         $('.price1').append(result1);
         for (j = 0; j < results[1].goingThere.length; j++) {
-            let result = '<div data-key="tripObject' + 1 + 'flight' + results[1].goingThere[j].flightNumber + '">' + "Flight Number:" + ' ' + results[1].goingThere[j].flightNumber + ' ' + "Departure Time:" + ' ' + results[1].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[1].goingThere[j].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[1].goingThere[j].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
+            let result = '<div data-key="tripObject' + 1 + 'flight' + results[1].goingThere[j].flightNumber + '">' + "Flight:" + ' ' + results[1].goingThere[j].flightNumber + ' ' + "Departure Time:" + ' ' + results[1].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[1].goingThere[j].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[1].goingThere[j].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
             $('.departure1').append(result);
       }
         for (k = 0; k < results[1].comingBack.length; k++) {
-            let result = '<div class="tripFlight" data-key="tripObject' + 1 + 'flight' + results[1].comingBack[k].flightNumber + '">' + "Flight Number:" + ' ' + results[1].comingBack[k].flightNumber + ' ' + "Return Time:" + ' ' + results[1].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[1].comingBack[k].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[1].comingBack[k].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
+            let result = '<div class="tripFlight" data-key="tripObject' + 1 + 'flight' + results[1].comingBack[k].flightNumber + '">' + "Flight:" + ' ' + results[1].comingBack[k].flightNumber + ' ' + "Return Time:" + ' ' + results[1].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[1].comingBack[k].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[1].comingBack[k].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
             $('.arrival1').append(result);
       }
     let result2 = results[2].price   
         $('.price2').append(result2);
         for (j = 0; j < results[0].goingThere.length; j++) {
-            let result = '<div data-key="tripObject' + 2 + 'flight' + results[2].goingThere[j].flightNumber + '">' + "Flight Number:" + ' ' + results[2].goingThere[j].flightNumber + ' ' + "Departure Time:" + ' ' + results[2].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[2].goingThere[j].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[2].goingThere[j].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
+            let result = '<div data-key="tripObject' + 2 + 'flight' + results[2].goingThere[j].flightNumber + '">' + "Flight:" + ' ' + results[2].goingThere[j].flightNumber + ' ' + "Departure Time:" + ' ' + results[2].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[2].goingThere[j].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[2].goingThere[j].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
             $('.departure2').append(result);
       }
         for (k = 0; k < results[0].comingBack.length; k++) {
-            let result = '<div class="tripFlight" data-key="tripObject' + 2 + 'flight' + results[2].comingBack[k].flightNumber + '">' + "Flight Number:" + ' ' + results[2].comingBack[k].flightNumber + ' ' + "Return Time:" + ' ' + results[2].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[2].comingBack[k].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[2].comingBack[k].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
+            let result = '<div class="tripFlight" data-key="tripObject' + 2 + 'flight' + results[2].comingBack[k].flightNumber + '">' + "Flight:" + ' ' + results[2].comingBack[k].flightNumber + ' ' + "Return Time:" + ' ' + results[2].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[2].comingBack[k].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[2].comingBack[k].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
             $('.arrival2').append(result);
       }
     let result3 = results[3].price   
         $('.price3').append(result3);
         for (j = 0; j < results[3].goingThere.length; j++) {
-            let result = '<div data-key="tripObject' + 3 + 'flight' + results[3].goingThere[j].flightNumber + '">' + "Flight Number:" + ' ' + results[3].goingThere[j].flightNumber + ' ' + "Departure Time:" + ' ' + results[3].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[3].goingThere[j].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[3].goingThere[j].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
+            let result = '<div data-key="tripObject' + 3 + 'flight' + results[3].goingThere[j].flightNumber + '">' + "Flight:" + ' ' + results[3].goingThere[j].flightNumber + ' ' + "Departure Time:" + ' ' + results[3].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[3].goingThere[j].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[3].goingThere[j].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
             $('.departure3').append(result);
       }
         for (k = 0; k < results[3].comingBack.length; k++) {
-            let result = '<div class="tripFlight" data-key="tripObject' + 3 + 'flight' + results[3].comingBack[k].flightNumber + '">' + "Flight Number:" + ' ' + results[3].comingBack[k].flightNumber + ' ' + "Return Time:" + ' ' + results[3].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[3].comingBack[k].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[3].comingBack[k].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
+            let result = '<div class="tripFlight" data-key="tripObject' + 3 + 'flight' + results[3].comingBack[k].flightNumber + '">' + "Flight:" + ' ' + results[3].comingBack[k].flightNumber + ' ' + "Return Time:" + ' ' + results[3].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[3].comingBack[k].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[3].comingBack[k].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
             $('.arrival3').append(result);
       }
     let result4 = results[4].price   
         $('.price4').append(result4);
         for (j = 0; j < results[4].goingThere.length; j++) {
-            let result = '<div data-key="tripObject' + 4 + 'flight' + results[4].goingThere[j].flightNumber + '">' + "Flight Number:" + ' ' + results[4].goingThere[j].flightNumber + ' ' + "Departure Time:" + ' ' + results[4].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[4].goingThere[j].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[4].goingThere[j].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
+            let result = '<div data-key="tripObject' + 4 + 'flight' + results[4].goingThere[j].flightNumber + '">' + "Flight:" + ' ' + results[4].goingThere[j].flightNumber + ' ' + "Departure Time:" + ' ' + results[4].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[4].goingThere[j].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[4].goingThere[j].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
             $('.departure4').append(result);
       }
         for (k = 0; k < results[4].comingBack.length; k++) {
-            let result = '<div class="tripFlight" data-key="tripObject' + 4 + 'flight' + results[4].comingBack[k].flightNumber + '">' + "Flight Number:" + ' ' + results[4].comingBack[k].flightNumber + ' ' + "Return Time:" + ' ' + results[4].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[4].comingBack[k].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[4].comingBack[k].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
+            let result = '<div class="tripFlight" data-key="tripObject' + 4 + 'flight' + results[4].comingBack[k].flightNumber + '">' + "Flight:" + ' ' + results[4].comingBack[k].flightNumber + ' ' + "Return Time:" + ' ' + results[4].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[4].comingBack[k].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[4].comingBack[k].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
             $('.arrival4').append(result);
       }
     let result5 = results[5].price   
         $('.price5').append(result5);
         for (j = 0; j < results[0].goingThere.length; j++) {
-            let result = '<div data-key="tripObject' + 5 + 'flight' + results[5].goingThere[j].flightNumber + '">' + "Flight Number:" + ' ' + results[5].goingThere[j].flightNumber + ' ' + "Departure Time:" + ' ' + results[5].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[5].goingThere[j].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[5].goingThere[j].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
+            let result = '<div data-key="tripObject' + 5 + 'flight' + results[5].goingThere[j].flightNumber + '">' + "Flight:" + ' ' + results[5].goingThere[j].flightNumber + ' ' + "Departure Time:" + ' ' + results[5].goingThere[j].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[5].goingThere[j].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[5].goingThere[j].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
             $('.departure5').append(result);
       }
         for (k = 0; k < results[0].comingBack.length; k++) {
-            let result = '<div class="tripFlight" data-key="tripObject' + 5 + 'flight' + results[5].comingBack[k].flightNumber + '">' + "Flight Number:" + ' ' + results[5].comingBack[k].flightNumber + ' ' + "Return Time:" + ' ' + results[5].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[5].comingBack[k].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[5].comingBack[k].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
+            let result = '<div class="tripFlight" data-key="tripObject' + 5 + 'flight' + results[5].comingBack[k].flightNumber + '">' + "Flight:" + ' ' + results[5].comingBack[k].flightNumber + ' ' + "Return Time:" + ' ' + results[5].comingBack[k].departureTime.split('').slice(0,10).join('') + ' ' + militarytoAMPM(results[5].comingBack[k].departureTime.split('').slice(11,16).join('')) + ' ' + "-" + ' '+ militarytoAMPM(results[5].comingBack[k].arrivalTime.split('').slice(11,16).join('')) + ' </div>'
             $('.arrival5').append(result);
       }
 }
@@ -231,6 +234,17 @@ function militarytoAMPM(militarytime) {
     timeValue += (hours >= 12) ? " P.M." : " A.M."; 
 
     return timeValue;
+}
+
+function getCarrierName(symbol,carrierArray){
+    let carrierName = "";
+
+    carrierArray.forEach(function(item){
+        if (symbol == item.code){
+            carrierName = item.name;
+        }
+    }); 
+    return carrierName;
 }
 
 
